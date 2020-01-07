@@ -55,7 +55,7 @@ import static com.apptomate.schedularapp.util.ApiConstants.getToTime;
 public class ScheduleAddActivity extends AppCompatActivity implements LoginView, SchedulaerAdapter.EventListener, SaveView {
 
     RecyclerView rv;
-    TextView tv_id,tv_day;
+    TextView tv_id, tv_day;
     ProgressDialog progressDialog;
     EditText et_don_name;
     String currentdate;
@@ -71,14 +71,14 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
         Objects.requireNonNull(getSupportActionBar()).setTitle("Add Schedule");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         rv = findViewById(R.id.rv_sheours);
-        user_id=new SharedPrefs(this).getUserDetails().get(SharedPrefs.KEY_USERID);
+        user_id = new SharedPrefs(this).getUserDetails().get(SharedPrefs.KEY_USERID);
         switch_sc_allarm = findViewById(R.id.switch_sc_allarm);
         et_don_name = findViewById(R.id.et_don_name);
         use_schedule_switch = findViewById(R.id.use_schedule_switch);
         tv_scstart = findViewById(R.id.tv_scstart);
         tv_scend = findViewById(R.id.tv_scend);
         tv_id = new TextView(this);
-        tv_day=new TextView(this);
+        tv_day = new TextView(this);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
@@ -88,11 +88,10 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
 
     }
 
-    private void getScheduledData()
-    {
+    private void getScheduledData() {
         progressDialog = ApiConstants.createProgressDialog(this);
         LoginImpl login = new LoginImpl(this);
-        login.handleLogin(new JSONObject(), "DoNotDisturb/listDoNotDisturbByUserId?userId="+user_id, "GET");
+        login.handleLogin(new JSONObject(), "DoNotDisturb/listDoNotDisturbByUserId?userId=" + user_id, "GET");
 
     }
 
@@ -152,8 +151,7 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
                     al_active.add(isActive);
                 }
 
-                if (day.equalsIgnoreCase(currentdate))
-                {
+                if (day.equalsIgnoreCase(currentdate)) {
                     tv_id.setText(doNotDisturbId);
                     tv_day.setText(day);
                     tv_scend.setText(closeTime);
@@ -184,7 +182,7 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
 
         tv_id.setText(res.getDoNotDisturbId());
         tv_day.setText(res.getDay());
-       // Toast.makeText(this, "" + res.getDay(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "" + res.getDay(), Toast.LENGTH_SHORT).show();
         et_don_name.setText(res.getReason());
         use_schedule_switch.setChecked(Boolean.parseBoolean(res.getIsActive()));
         switch_sc_allarm.setChecked(Boolean.parseBoolean(res.getIsAllowAlarmRings()));
@@ -192,9 +190,8 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
         tv_scend.setText(res.getCloseTime());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public void save(View view)
-    {
+
+    public void save(View view) {
 
         JSONObject jsonObject = new JSONObject();
         try {
@@ -208,38 +205,36 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
             e.printStackTrace();
         }
         progressDialog.show();
-       String from= getFromTime(tv_scstart.getText().toString());
-       String to= getToTime(tv_scend.getText().toString());
-        getClickingDay(tv_day.getText().toString(),from,to);
+        String from = getFromTime(tv_scstart.getText().toString());
+        String to = getToTime(tv_scend.getText().toString());
+        getClickingDay(tv_day.getText().toString(), from, to);
         new SaveImpl(this).handleSave(jsonObject, "DoNotDisturb/saveDoNotDisturb", "PUT");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void getClickingDay(String toString, String from, String to)
-    {
-        switch (toString)
-        {
+
+    private void getClickingDay(String toString, String from, String to) {
+        switch (toString) {
             case "mon":
-              String date=  getWeekDates(0);
-                syncToCalander(date,from,to);
+                String date = getWeekDates(0);
+                syncToCalander(date, from, to);
                 break;
             case "tue":
-                syncToCalander(getWeekDates(1),from,to);
+                syncToCalander(getWeekDates(1), from, to);
                 break;
             case "wed":
-                syncToCalander(getWeekDates(2),from,to);
+                syncToCalander(getWeekDates(2), from, to);
                 break;
             case "thu":
-                syncToCalander(getWeekDates(3),from,to);
+                syncToCalander(getWeekDates(3), from, to);
                 break;
             case "fri":
-                syncToCalander(getWeekDates(4),from,to);
+                syncToCalander(getWeekDates(4), from, to);
                 break;
             case "sat":
-                syncToCalander(getWeekDates(5),from,to);
+                syncToCalander(getWeekDates(5), from, to);
                 break;
             case "sun":
-                syncToCalander(getWeekDates(6),from,to);
+                syncToCalander(getWeekDates(6), from, to);
                 break;
         }
     }
@@ -300,8 +295,7 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
 
     }
 
-   private String getWeekDates(int position)
-   {
+    private String getWeekDates(int position) {
         @SuppressLint("SimpleDateFormat") DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
         Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
@@ -316,14 +310,13 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    void syncToCalander(String date,String from,String to)
-    {
 
-        int open_hour=Integer.parseInt(from.substring(0,2));
-        int close_hour=Integer.parseInt(to.substring(0,2));
-        int open_min=Integer.parseInt(from.substring(from.length()-2));
-        int close_min=Integer.parseInt(to.substring(to.length()-2));
+    void syncToCalander(String date, String from, String to) {
+
+        int open_hour = Integer.parseInt(from.substring(0, 2));
+        int close_hour = Integer.parseInt(to.substring(0, 2));
+        int open_min = Integer.parseInt(from.substring(from.length() - 2));
+        int close_min = Integer.parseInt(to.substring(to.length() - 2));
         Date d = null;
         try {
             d = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH).parse(date);
@@ -334,10 +327,10 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
         cal.setTime(d);
         int month = cal.get(Calendar.MONTH);
         int year = cal.get(Calendar.YEAR);
-        int date_=cal.get(Calendar.DATE);
-        Log.e("Month",""+date);
-        Log.e("year",""+year);
-        Log.e("date_",""+date_);
+        int date_ = cal.get(Calendar.DATE);
+        Log.e("Month", "" + date);
+        Log.e("year", "" + year);
+        Log.e("date_", "" + date_);
         long calID = 3; // Make sure to which calender you want to add event
         long startMillis = 0;
         long endMillis = 0;
@@ -353,13 +346,31 @@ public class ScheduleAddActivity extends AppCompatActivity implements LoginView,
         values.put(CalendarContract.Events.DTEND, endMillis);
         values.put(CalendarContract.Events.TITLE, et_don_name.getText().toString());
         values.put(CalendarContract.Events.DESCRIPTION, "Schedule");
-        values.put(CalendarContract.Events.CALENDAR_ID, calID);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            values.put(CalendarContract.Events.CALENDAR_ID, 1);
+        } else {
+            values.put(CalendarContract.Events.CALENDAR_ID, 1);
+        }
         values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
-        @SuppressLint("MissingPermission") Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+        }
+        Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
 
 // get the event ID that is the last element in the Uri
         long eventID = Long.parseLong(uri.getLastPathSegment());
     }
+
+
 
 
 
