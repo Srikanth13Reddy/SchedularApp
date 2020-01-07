@@ -3,15 +3,22 @@ package com.apptomate.schedularapp.fragments;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,9 +39,19 @@ import com.apptomate.schedularapp.util.SharedPrefs;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.TimeZone;
+
+import static com.apptomate.schedularapp.util.ApiConstants.getFromTime;
+import static com.apptomate.schedularapp.util.ApiConstants.getToTime;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,7 +65,7 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
     private AppCompatTextView et_get,et_leave;
     private AppCompatButton btn_save;
     private Switch aSwitch;
-    private TextView tv_b_id;
+    private TextView tv_b_id,tv_day;
     private String user_id;
     private String currentday;
 
@@ -71,6 +88,7 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,6 +96,7 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
         View v = inflater.inflate(R.layout.fragment_businesshours, container, false);
          findIds(v);
          timeActions();
+        tv_day=new TextView(context);
          getData();
         return v;
 
@@ -96,6 +115,7 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
         rv.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void timeActions()
     {
         et_get.setOnClickListener(v -> new ApiConstants(context).showHourPicker(et_get));
@@ -103,6 +123,7 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
         btn_save.setOnClickListener(v -> save());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void save()
     {
         JSONObject jsonObject = new JSONObject();
@@ -115,11 +136,12 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
           } catch (JSONException e) {
             e.printStackTrace();
          }
+        String from= getFromTime(et_get.getText().toString());
+        String to= getToTime(et_leave.getText().toString());
+        getClickingDay(tv_day.getText().toString(),from,to);
         progressDialog.show();
         new SaveImpl(this).handleSave(jsonObject,"BusinessHours/saveBusinessHours","PUT");
     }
-
-
 
     private void getData()
     {
@@ -129,10 +151,6 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
         login.handleLogin(new JSONObject(),"BusinessHours/listBusinessHours?userid="+user_id,"GET");
 
     }
-
-
-
-
 
     @Override
     public void onSucess(String code, String response)
@@ -144,7 +162,6 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
              assignData(response);
          }
     }
-
     private void assignData(String response)
     {
         progressDialog.dismiss();
@@ -175,6 +192,7 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
                     tv_b_id.setText(businesshourId);
                     et_leave.setText(closeTime);
                     et_get.setText(openTime);
+                    tv_day.setText(day);
                     aSwitch.setChecked(Boolean.parseBoolean(isActive));
 
                 }
@@ -202,76 +220,9 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
         tv_b_id.setText(res.getBusinesshourId());
         et_leave.setText(res.getCloseTime());
         et_get.setText(res.getOpenTime());
+        tv_day.setText(res.getDay());
         aSwitch.setChecked(Boolean.parseBoolean(res.getIsActive()));
     }
-
-//    private void showTimePicker(AppCompatEditText et)
-//    {
-////        final Calendar c = Calendar.getInstance();
-////        int mHour = c.get(Calendar.HOUR_OF_DAY);
-////        int mMinute = c.get(Calendar.MINUTE);
-////
-////
-////        // Launch Time Picker Dialog
-////        @SuppressLint({"DefaultLocale", "SetTextI18n"}) TimePickerDialog timePickerDialog = new TimePickerDialog(context,
-////                (view, hourOfDay, minute) ->
-////                        et.setText(""+String.format("%02d\t:\t%02d", hourOfDay, minute)), mHour, mMinute, false);
-////        timePickerDialog.show();
-//
-//
-//        calendar = Calendar.getInstance();
-//        CalendarHour = calendar.get(Calendar.HOUR_OF_DAY);
-//        CalendarMinute = calendar.get(Calendar.MINUTE);
-//        int hour = CalendarHour % 12;
-//
-//        timepickerdialog = new TimePickerDialog(context,
-//                new TimePickerDialog.OnTimeSetListener() {
-//
-//                    @SuppressLint("DefaultLocale")
-//                    @Override
-//                    public void onTimeSet(TimePicker view, int hourOfDay,
-//                                          int minute) {
-//
-//                        if (hourOfDay == 0) {
-//
-//                            hourOfDay += 12;
-//
-//                            format = "AM";
-//                        }
-//                        else if (hourOfDay == 12) {
-//
-//                            format = "PM";
-//
-//                        }
-//                        else if (hourOfDay > 12) {
-//
-//                            hourOfDay -= 12;
-//
-//                            format = "PM";
-//
-//                        }
-//                        else {
-//
-//                            format = "AM";
-//                        }
-//
-//
-//                        //et.setText(hourOfDay + "\t:\t" + minute + "\t\t"+format);
-//                       // et.setText(String.format("%02d:%02d", hourOfDay, minute+format));
-//                        int hour = hourOfDay % 12;
-//                        et.setText(String.format("%02d:%02d %s", hour == 0 ? 12 : hour,
-//                                minute, hourOfDay < 12 ? "am" : "pm"));
-//                    }
-//                }, CalendarHour, CalendarMinute, false);
-//        timepickerdialog.show();
-//
-//
-//
-//    }
-
-
-
-
 
     @Override
     public void onSaveSucess(String code, String response)
@@ -292,4 +243,99 @@ public class BusinesshoursFragment extends Fragment implements LoginView,Busines
         progressDialog.dismiss();
         Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void getClickingDay(String toString, String from, String to)
+    {
+        switch (toString)
+        {
+            case "mon":
+                String date=  getWeekDates(0);
+                syncToCalander(date,from,to);
+                break;
+            case "tue":
+                syncToCalander(getWeekDates(1),from,to);
+                break;
+            case "wed":
+                syncToCalander(getWeekDates(2),from,to);
+                break;
+            case "thu":
+                syncToCalander(getWeekDates(3),from,to);
+                break;
+            case "fri":
+                syncToCalander(getWeekDates(4),from,to);
+                break;
+            case "sat":
+                syncToCalander(getWeekDates(5),from,to);
+                break;
+            case "sun":
+                syncToCalander(getWeekDates(6),from,to);
+                break;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    void syncToCalander(String date,String from,String to)
+    {
+
+        int open_hour=Integer.parseInt(from.substring(0,2));
+        int close_hour=Integer.parseInt(to.substring(0,2));
+        int open_min=Integer.parseInt(from.substring(from.length()-2));
+        int close_min=Integer.parseInt(to.substring(to.length()-2));
+        Date d = null;
+        try {
+            d = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH).parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        int date_=cal.get(Calendar.DATE);
+        Log.e("Month",""+date);
+        Log.e("year",""+year);
+        Log.e("date_",""+date_);
+        long calID = 3; // Make sure to which calender you want to add event
+        long startMillis = 0;
+        long endMillis = 0;
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(year, month, date_, open_hour, open_min);
+        startMillis = beginTime.getTimeInMillis();
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(year, month, date_, close_hour, close_min);
+        endMillis = endTime.getTimeInMillis();
+        ContentResolver cr = context.getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put(CalendarContract.Events.DTSTART, startMillis);
+        values.put(CalendarContract.Events.DTEND, endMillis);
+        values.put(CalendarContract.Events.TITLE, "Business Hours");
+        values.put(CalendarContract.Events.DESCRIPTION, "Business Hours");
+        values.put(CalendarContract.Events.CALENDAR_ID, calID);
+        values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
+        @SuppressLint("MissingPermission") Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+
+// get the event ID that is the last element in the Uri
+        long eventID = Long.parseLong(uri.getLastPathSegment());
+    }
+
+
+    private String getWeekDates(int position)
+    {
+        @SuppressLint("SimpleDateFormat") DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        String[] days = new String[7];
+        for (int i = 0; i < 7; i++) {
+            days[i] = format.format(calendar.getTime());
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        Log.e("Days", "" + days.length);
+        return days[position];
+
+    }
+
+
 }

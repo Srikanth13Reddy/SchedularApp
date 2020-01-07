@@ -14,6 +14,8 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.apptomate.schedularapp.R;
+
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -153,10 +155,10 @@ public class ApiConstants
 
     public static Date convertTodate(String date)
     {
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat curFormater = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
         Date dateObj = null;
         try {
-            dateObj = curFormater.parse(date);
+            dateObj = format.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -229,7 +231,7 @@ public class ApiConstants
 
 
 
-                    et.setText(convertDate(mHour) + "\t:\t" + convertDate(mMin) +"\t\t"+AM_PM);
+                    et.setText(convertDate(mHour) + ":" + convertDate(mMin) +" "+AM_PM);
 
                 }
             }
@@ -246,6 +248,37 @@ public class ApiConstants
         } else {
             return "0" + input;
         }
+    }
+
+
+    public static String getFromTime(String time)
+    {
+        SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+        Date date = null;
+        try {
+            date = parseFormat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(parseFormat.format(date) + " = " + displayFormat.format(date));
+
+        return ""+ displayFormat.format(date);
+    }
+
+    public static String getToTime(String time)
+    {
+        SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+        Date date = null;
+        try {
+            date = parseFormat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(parseFormat.format(date) + " = " + displayFormat.format(date));
+
+        return ""+ displayFormat.format(date);
     }
 
 

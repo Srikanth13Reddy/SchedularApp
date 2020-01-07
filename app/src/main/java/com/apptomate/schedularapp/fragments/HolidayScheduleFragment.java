@@ -2,17 +2,24 @@ package com.apptomate.schedularapp.fragments;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,10 +47,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.TimeZone;
+
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 /**
@@ -58,6 +70,8 @@ public class HolidayScheduleFragment extends Fragment implements LoginView,Holid
     private ProgressDialog progressDialog;
     private RecyclerView rv;
     private String user_id;
+    private EditText et_holiday;
+
     public HolidayScheduleFragment() {
         // Required empty public constructor
     }
@@ -82,11 +96,14 @@ public class HolidayScheduleFragment extends Fragment implements LoginView,Holid
         rv.addItemDecoration(dividerItemDecoration);
         rv.setLayoutManager(llm);
         getHolidayData();
-        floatingActionButton.setOnClickListener((View v1) ->
-                showAddHolidayDialog());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            floatingActionButton.setOnClickListener((View v1) ->
+                    showAddHolidayDialog());
+        }
         return v;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint("InflateParams")
     private void showAddHolidayDialog()
     {
@@ -98,7 +115,7 @@ public class HolidayScheduleFragment extends Fragment implements LoginView,Holid
         }
         if (vv!=null)
         {
-            EditText et_holiday=vv.findViewById(R.id.et_holiday);
+             et_holiday=vv.findViewById(R.id.et_holiday);
             EditText et_date=vv.findViewById(R.id.et_date);
             AppCompatTextView tv_start=vv.findViewById(R.id.tv_start);
             AppCompatTextView tv_end=vv.findViewById(R.id.tv_end);
@@ -116,7 +133,6 @@ public class HolidayScheduleFragment extends Fragment implements LoginView,Holid
             vv.startAnimation( transition_in_view );
             Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
             alertDialog.show();
 
             rv_end.setOnClickListener(v -> new ApiConstants(context).showdateDialog(tv_end));
@@ -144,6 +160,7 @@ public class HolidayScheduleFragment extends Fragment implements LoginView,Holid
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                         syncToCalander(tv_start.getText().toString(),et_holiday.getText().toString());
                         saveData(jsonObject);
                      }
 
@@ -364,6 +381,77 @@ public class HolidayScheduleFragment extends Fragment implements LoginView,Holid
         progressDialog.dismiss();
         Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
     }
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    void syncToCalander(String date,String title)
+    {
+
+
+        SimpleDateFormat spf=new SimpleDateFormat("MM-dd-yyyy");
+        Date newDate= null;
+        try {
+            newDate = spf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        spf= new SimpleDateFormat("MMMM d, yyyy");
+       String date__ = spf.format(newDate);
+        System.out.println(date);
+
+
+
+
+
+
+
+
+//        int open_hour=Integer.parseInt(tv_scstart.getText().toString().substring(0,2));
+//        int close_hour=Integer.parseInt(tv_scend.getText().toString().substring(0,2));
+//        int open_min=Integer.parseInt(tv_scstart.getText().toString().substring(tv_scstart.getText().toString().length()-2));
+//        int close_min=Integer.parseInt(tv_scend.getText().toString().substring(tv_scend.getText().toString().length()-2));
+        Date d = null;
+        try {
+            d = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH).parse(date__);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        int date_=cal.get(Calendar.DATE);
+        Log.e("Month",""+month);
+        Log.e("year",""+year);
+        Log.e("date_",""+date_);
+        long calID = 3; // Make sure to which calender you want to add event
+        long startMillis = 0;
+        long endMillis = 0;
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(year, month, date_, 0, 0);
+        startMillis = beginTime.getTimeInMillis();
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(year, month, date_, 0, 0);
+        endMillis = endTime.getTimeInMillis();
+        ContentResolver cr = context.getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put(CalendarContract.Events.DTSTART, startMillis);
+        values.put(CalendarContract.Events.DTEND, endMillis);
+        values.put(CalendarContract.Events.TITLE, title);
+        values.put(CalendarContract.Events.DESCRIPTION, "Holiday Schedule");
+        values.put(CalendarContract.Events.CALENDAR_ID, calID);
+        values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
+        @SuppressLint("MissingPermission") Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+
+// get the event ID that is the last element in the Uri
+        long eventID = Long.parseLong(uri.getLastPathSegment());
+    }
+
+
+
+
+
 
 
 
