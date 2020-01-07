@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/dialog_bg"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:orientation="vertical"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/scrl"
+        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:text="Auto SMS will be responded when the user is in another call"
+            android:fontFamily="@font/b_reg"
+            android:id="@+id/tv_tex"
+            android:gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14dp"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:text="Display text"
+            android:fontFamily="@font/bbold"
+            android:id="@+id/tv_title"
+            android:gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18dp"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:text="Let me know when i can call back"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingLeft="8dp"
+            android:singleLine="true"
+            android:textSize="16dp"
+            android:layout_below="@id/tv_h"
+            android:id="@+id/et_sms_text"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/border"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/ll_number"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:text="Set call back duration"
+                android:id="@+id/tv_title_"
+                android:gravity="center|left"
+                android:fontFamily="@font/bbold"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_marginTop="24dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginRight="12dp"
+                    android:layout_height="wrap_content">
+
+
+                    <NumberPicker
+                        android:id="@+id/numberPicker_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Hours"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="1dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginLeft="12dp"
+                    android:layout_height="wrap_content">
+
+
+                    <NumberPicker
+                        android:id="@+id/numberPicker_minute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Minutes"
+                        android:layout_marginLeft="1dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/scrl"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:text="Ok"
+            android:gravity="center|start"
+            android:id="@+id/tv_ok_sms"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:text="Cancel"
+            android:gravity="center|end"
+            android:id="@+id/tv_cancel_sms"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:layout_height="40dp" />
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
+
+

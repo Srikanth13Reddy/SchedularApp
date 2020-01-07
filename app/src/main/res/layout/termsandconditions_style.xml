@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+<androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:text="Terms and Condition"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:id="@+id/tv_h"
+            android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_h"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@id/ll_acpt"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:lineSpacingExtra="2dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:id="@+id/tv_terms"
+            android:layout_marginTop="14dp"
+            android:textSize="14dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="14dp"
+            android:id="@+id/ll_acpt"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_height="70dp">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_acpt"
+        android:text="@string/accept"
+        style="@style/Button_Style"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+

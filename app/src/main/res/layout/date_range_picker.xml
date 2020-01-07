@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        custom:cardCornerRadius="8dp">
+
+        <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
+            android:id="@+id/calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            custom:calendar_tag="Test"
+            android:layout_margin="10dp"
+            custom:disable_date_color="#ABABAB"
+            custom:header_bg="@drawable/calendar_header"
+            custom:range_color="@color/lite_blue"
+            custom:selected_date_circle_color="@color/colorPrimary"
+            custom:title_color="@color/white"
+            custom:editable="true"
+            custom:week_offset="0">
+
+        </com.archit.calendardaterangepicker.customviews.DateRangeCalendarView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</RelativeLayout>

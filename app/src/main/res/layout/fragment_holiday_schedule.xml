@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".fragments.HolidayScheduleFragment">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <LinearLayout-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:gravity="center|left"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:src="@drawable/ic_check_black_24dp"-->
+<!--                android:tint="#4CAF50"-->
+<!--                android:layout_marginLeft="12dp"-->
+<!--                android:id="@+id/iv_check"-->
+<!--                android:layout_height="30dp"/>-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:gravity="center|left"-->
+<!--                    android:layout_marginLeft="12dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:text="Christamas holiday"-->
+<!--                        android:textSize="16dp"-->
+<!--                        android:fontFamily="@font/bbold"-->
+<!--                        android:textColor="@color/colorPrimaryDark"-->
+<!--                        android:layout_height="wrap_content"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:text="Sat 15 Dec 2019 - Wed 25,Dec 2019"-->
+<!--                        android:textSize="14dp"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:layout_height="wrap_content"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:src="@drawable/ic_edit_black_24dp"-->
+<!--                    android:layout_marginRight="12dp"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:tint="@color/colorPrimaryDark"-->
+<!--                    android:layout_alignParentRight="true" />-->
+
+<!--            </RelativeLayout>-->
+
+<!--        </LinearLayout>-->
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginBottom="12dp"-->
+<!--            android:background="@color/colorPrimaryDark"-->
+<!--            android:layout_height="0.5dp"/>-->
+<!--        <LinearLayout-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:gravity="center|left"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:tint="#4CAF50"-->
+<!--                android:layout_marginLeft="12dp"-->
+<!--                android:layout_height="30dp"/>-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:gravity="center|left"-->
+<!--                    android:layout_marginLeft="12dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:text="Good friday"-->
+<!--                        android:textSize="16dp"-->
+<!--                        android:fontFamily="@font/bbold"-->
+<!--                        android:textColor="@color/colorPrimaryDark"-->
+<!--                        android:layout_height="wrap_content"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:text="Fri 19, April2019"-->
+<!--                        android:textSize="14dp"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:layout_height="wrap_content"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:src="@drawable/ic_edit_black_24dp"-->
+<!--                    android:layout_marginRight="12dp"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:tint="@color/colorPrimaryDark"-->
+<!--                    android:layout_alignParentRight="true" />-->
+
+<!--            </RelativeLayout>-->
+
+<!--        </LinearLayout>-->
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginBottom="12dp"-->
+<!--            android:background="@color/colorPrimaryDark"-->
+<!--            android:layout_height="0.5dp"/>-->
+<!--    </LinearLayout>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/rv_holidays"
+        android:layout_height="match_parent" />
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:layout_width="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:id="@+id/add_holiday"
+    android:src="@drawable/ic_add_black_24dp"
+    android:layout_gravity="end|bottom"
+    android:layout_alignParentRight="true" />
+
+
+</RelativeLayout>

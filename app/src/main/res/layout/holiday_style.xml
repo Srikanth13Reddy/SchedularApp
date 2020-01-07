@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center|left"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp"
+    android:layout_height="wrap_content">
+
+<!--    <RadioButton-->
+<!--        android:layout_width="30dp"-->
+<!--        android:src="@drawable/ic_check_black_24dp"-->
+<!--        android:tint="#004CAF50"-->
+<!--        android:background="@drawable/radio_background"-->
+<!--        android:button="@android:color/transparent"-->
+<!--        android:checked="true"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:id="@+id/iv_check"-->
+<!--        android:layout_height="30dp"/>-->
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="30dp"
+        android:src="@drawable/ic_check_black_24dp"
+        android:tint="#004CAF50"
+        android:layout_marginLeft="12dp"
+        android:id="@+id/iv_check"
+        android:layout_height="30dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:gravity="center|left"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="54dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="Do Not Disturb"
+                android:textSize="18dp"
+                android:id="@+id/tv_hlname"
+                android:fontFamily="@font/bbold"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="Sat 15 Dec 2019 - Wed 25,Dec 2019"
+                android:textSize="12dp"
+                android:id="@+id/tv_hldate"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_edit_black_24dp"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_hedit"
+            android:layout_height="24dp"
+            android:tint="@color/colorPrimaryDark"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>

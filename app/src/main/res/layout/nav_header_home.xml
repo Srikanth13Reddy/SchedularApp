@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical"
+    android:orientation="vertical"
+    android:background="@color/background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|start"
+            android:id="@+id/ll_alert"
+            android:layout_marginTop="35dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/Nav_ImageView"
+                android:src="@drawable/alert"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Nav_TextView"
+                android:text="Alert"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|start"
+            android:id="@+id/ll_sms"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/Nav_ImageView"
+                android:src="@drawable/email"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Nav_TextView"
+                android:text="SMS"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|start"
+            android:id="@+id/ll_donot_disturb"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/Nav_ImageView"
+                android:src="@drawable/donotdisturb"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Nav_TextView"
+                android:text="Do Not Disturb"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|start"
+            android:id="@+id/ll_holiday_schedule"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/Nav_ImageView"
+                android:src="@drawable/holidayschedule"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Nav_TextView"
+                android:text="Holiday Schedule" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|start"
+            android:id="@+id/ll_businesshours"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/Nav_ImageView"
+                android:src="@drawable/bhours"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:text="Business Hours"
+                style="@style/Nav_TextView" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|start"
+            android:id="@+id/ll_contacts"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/Nav_ImageView"
+                android:src="@drawable/ic_call_black_24dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:text="Contacts"
+                style="@style/Nav_TextView" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|start"
+            android:id="@+id/ll_calender"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/Nav_ImageView"
+                android:src="@drawable/calendar"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:text="Calender"
+                style="@style/Nav_TextView" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+
+    </LinearLayout>
+
+<!--    <ListView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:id="@+id/lv_nav"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_height="match_parent"/>-->
+</LinearLayout>

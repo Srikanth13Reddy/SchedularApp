@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    tools:context=".AlertActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/ll_alert"
+            android:layout_marginTop="12dp"
+            style="@style/Alert_Ll_Style">
+            <TextView
+                style="@style/Alert_Textview_Style"
+                android:text="@string/duration_" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/tv_aduration"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            style="@style/Alert_Ll_Style"
+            android:onClick="openColorDialog">
+            <TextView
+                style="@style/Alert_Textview_Style"
+                android:text="@string/color" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="50dp"
+                android:layout_marginTop="3dp"
+                android:id="@+id/tv_acolor"
+                android:textColor="#00FF5566"
+                android:layout_height="14dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            style="@style/Alert_Ll_Style"
+            android:onClick="getTone">
+            <TextView
+                style="@style/Alert_Textview_Style"
+                android:text="@string/tone"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_a_tone"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+    </LinearLayout>
+
+    <Button
+        android:onClick="save"
+        android:text="@string/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        style="@style/Button_Style"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

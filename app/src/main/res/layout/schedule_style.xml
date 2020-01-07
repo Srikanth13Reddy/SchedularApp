@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:text="Schedule"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:id="@+id/tv_h"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Select days"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/bbold"
+            android:id="@+id/tt_rv"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:id="@+id/rv_sheours"
+            android:layout_marginTop="14dp"
+            android:layout_height="60dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:hint="Enter Do not disturb name"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingLeft="8dp"
+            android:singleLine="true"
+            android:id="@+id/et_don_name"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/border"
+            android:layout_height="50dp" />
+
+
+
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Use Schedule"
+            android:textSize="17dp"
+            android:id="@+id/use_schedule_switch"
+            android:fontFamily="@font/bbold"
+            android:layout_height="wrap_content"/>
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_start"
+            android:layout_marginTop="12dp"
+            style="@style/Alert_Ll_Style">
+            <TextView
+                style="@style/Alert_Textview_Style"
+                android:text="Start Time" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/tv_scstart"
+                android:textSize="14sp"
+                android:text="12:00"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_end"
+            style="@style/Alert_Ll_Style">
+            <TextView
+                style="@style/Alert_Textview_Style"
+                android:text="End Time" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/tv_scend"
+                android:text="12:00"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="0.5dp"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Allaram can overide end time"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/bbold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginLeft="20dp"
+                    android:lineSpacingExtra="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Schedule turn off when an alarm rings"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/switch_sc_allarm"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_marginRight="24dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="14dp"
+        android:id="@+id/ll_acpt"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_height="70dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save_schedule"
+            android:text="@string/save"
+            style="@style/Button_Style"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".fragments.BusinesshoursFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        android:gravity="center|top|left"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Select days"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="14dp"
+            android:layout_height="60dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:id="@+id/rv_bhours"
+                android:layout_height="60dp">
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:gravity="center"-->
+                <!--                android:orientation="horizontal"-->
+                <!--                android:layout_height="60dp">-->
+                <!--                <androidx.appcompat.widget.AppCompatEditText-->
+                <!--                    android:layout_width="60dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:hint="Sun"-->
+                <!--                    android:textSize="14dp"-->
+                <!--                    android:textColorHint="@color/colorPrimary"-->
+                <!--                    android:textAlignment="center"-->
+                <!--                    android:textColor="@color/colorPrimaryDark"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:background="@drawable/border"-->
+                <!--                    android:layout_height="40dp" />-->
+                <!--                <androidx.appcompat.widget.AppCompatEditText-->
+                <!--                    android:layout_width="60dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:hint="Mon"-->
+                <!--                    android:textSize="14dp"-->
+                <!--                    android:textColorHint="@color/colorPrimary"-->
+                <!--                    android:textColor="@color/colorPrimaryDark"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:backgroundTint="#a7d0e4"-->
+                <!--                    android:textAlignment="center"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:background="@drawable/border"-->
+                <!--                    android:layout_height="40dp" />-->
+                <!--                <androidx.appcompat.widget.AppCompatEditText-->
+                <!--                    android:layout_width="60dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:hint="Tue"-->
+                <!--                    android:textSize="14dp"-->
+                <!--                    android:textColorHint="@color/colorPrimary"-->
+                <!--                    android:textColor="@color/colorPrimaryDark"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:backgroundTint="#a7d0e4"-->
+                <!--                    android:textAlignment="center"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:background="@drawable/border"-->
+                <!--                    android:layout_height="40dp" />-->
+                <!--                <androidx.appcompat.widget.AppCompatEditText-->
+                <!--                    android:layout_width="60dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:hint="Thu"-->
+                <!--                    android:textSize="14dp"-->
+                <!--                    android:textColorHint="@color/colorPrimary"-->
+                <!--                    android:backgroundTint="#a7d0e4"-->
+                <!--                    android:textColor="@color/colorPrimaryDark"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textAlignment="center"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:background="@drawable/border"-->
+                <!--                    android:layout_height="40dp" />-->
+                <!--                <androidx.appcompat.widget.AppCompatEditText-->
+                <!--                    android:layout_width="60dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:hint="Fry"-->
+                <!--                    android:textSize="14dp"-->
+                <!--                    android:textColorHint="@color/colorPrimary"-->
+                <!--                    android:textColor="@color/colorPrimaryDark"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:backgroundTint="#a7d0e4"-->
+                <!--                    android:textAlignment="center"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:background="@drawable/border"-->
+                <!--                    android:layout_height="40dp" />-->
+                <!--                <androidx.appcompat.widget.AppCompatEditText-->
+                <!--                    android:layout_width="60dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:hint="Sat"-->
+                <!--                    android:textSize="14dp"-->
+                <!--                    android:textColorHint="@color/colorPrimary"-->
+                <!--                    android:textColor="@color/colorPrimaryDark"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textAlignment="center"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:background="@drawable/border"-->
+                <!--                    android:layout_height="40dp" />-->
+                <!--            </LinearLayout>-->
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Get to work by"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:hint="00 : 00  Am"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingLeft="8dp"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:singleLine="true"
+            android:id="@+id/et_get_workby"
+            android:textAlignment="center"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:focusable="false"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/border"
+            android:layout_height="50dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Leave work by"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:hint="00 : 00  Am"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingLeft="8dp"
+            android:textSize="18dp"
+            android:singleLine="true"
+            android:id="@+id/et_leave_workby"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:focusable="false"
+            android:layout_below="@id/et_holiday"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/border"
+            android:layout_height="50dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center|left"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Active Mode"
+                android:textSize="17dp"
+                android:fontFamily="@font/bbold"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"/>
+
+            <Switch
+                android:layout_width="80dp"
+                android:layout_marginRight="24dp"
+                android:id="@+id/switch_mode"
+                android:gravity="left"
+                android:showText="false"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="@string/save"
+            android:id="@+id/btn_save_"
+            android:layout_marginTop="48dp"
+            style="@style/Button_Style"/>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

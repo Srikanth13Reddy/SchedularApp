@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".SignupActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_above="@id/ll"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:text="Sign Up"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/ll"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="@string/name"
+            android:id="@+id/tv_name"
+            style="@style/Login_TextView"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:hint="@string/enter_your_name"
+            android:id="@+id/et_sname"
+            style="@style/Login_EditText"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="25dp"
+            android:id="@+id/tv_pass"
+            android:text="@string/phone"
+            style="@style/Login_TextView"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="50dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="60dp"
+                android:hint="@string/_91"
+                android:textAlignment="center"
+                android:paddingLeft="8dp"
+                android:focusable="false"
+                android:id="@+id/et_pass"
+                android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border"
+                android:layout_height="45dp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:hint="@string/enter_phone_number"
+                android:paddingLeft="8dp"
+                android:textSize="16sp"
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:id="@+id/et_snumber"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border"
+                android:layout_height="45dp" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="@string/e_mail"
+            android:layout_marginTop="25dp"
+            style="@style/Login_TextView"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:hint="@string/enter_email"
+            android:id="@+id/et_smail"
+            android:inputType="textEmailAddress"
+            style="@style/Login_EditText"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="@string/password"
+            android:layout_marginTop="25dp"
+            style="@style/Login_TextView"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:hint="@string/enter_password"
+            android:singleLine="true"
+            android:id="@+id/et_spassword"
+            android:inputType="textPassword"
+            style="@style/Login_EditText"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            android:gravity="center|start"
+            android:layout_marginLeft="30dp"
+            android:layout_height="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:text="@string/i_accept_the"
+                android:textSize="16sp"
+                android:id="@+id/cb_terms"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/terms_and_conditions"
+                android:textSize="16sp"
+                android:id="@+id/tv_tc"
+                android:onClick="termsandConditions"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="@string/sign_up"
+            android:onClick="signUp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="20dp"
+            style="@style/Button_Style"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="login"
+        android:gravity="center"
+        android:layout_height="40dp">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Already have an account ? "
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="17dp"
+            android:textColor="@color/colorPrimary"
+            android:text=" Sign In"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>

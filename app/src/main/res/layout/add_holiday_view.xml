@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:text="Holiday Schedule"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"
+        android:fontFamily="@font/bbold"
+        android:id="@+id/tv_h"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:hint="Enter holiday name"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingLeft="8dp"
+        android:singleLine="true"
+        android:layout_below="@id/tv_h"
+        android:id="@+id/et_holiday"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/border"
+        android:layout_height="50dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:hint="Select holiday date"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingLeft="8dp"
+        android:visibility="gone"
+        android:singleLine="true"
+        android:focusable="false"
+        android:layout_below="@id/et_holiday"
+        android:id="@+id/et_date"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/border"
+        android:layout_height="50dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:fontFamily="@font/bbold"
+        android:text="Select dates for holiday period"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/bbold"
+        android:text="Start Date :"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/rl_start"
+        android:layout_height="40dp">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:id="@+id/tv_start"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:fontFamily="@font/bbold"
+            android:text="01-06-2020"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/calendar"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/bbold"
+        android:text="End Date :"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/rl_end"
+        android:layout_height="40dp">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:id="@+id/tv_end"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:fontFamily="@font/bbold"
+            android:text="01-06-2020"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/calendar"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_below="@id/et_date"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Active Mode"
+        android:textSize="17dp"
+        android:checked="true"
+        android:id="@+id/holiday_switch"
+        android:fontFamily="@font/bbold"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:text="@string/save"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        style="@style/Button_Style"/>
+
+
+
+
+
+</LinearLayout>
+
+
